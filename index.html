@@ -14,54 +14,66 @@
     />
   </head>
   <body>
-    <div id="app" class="w-ws h-hs flex-col m-auto">
-      <div>
-        <img
-          class="max-w-ws h-[657px]"
-          src="public/WallpaperDog-20534536 1.svg"
-          alt=""
-        />
-          <img
-          class="max-w-ws h-[657px]"
-          src="public/WallpaperDog-20397673 1.svg"
-          alt=""
-        />
-          <img
-          class="max-w-ws h-[657px]"
-          src="public/WallpaperDog-20534536 1.svg"
-          alt=""
-        />
+    <div id="app" class="w-ws h-screen flex-col m-auto">
+      <div class="relative max-w-ws mx-auto my-0">
+        <div
+        id="scroll"
+          class="flex overflow-x-hidden snap-mandatory snap-x scroll-smooth"
+        >
+          <div id="slid-1" data-img="1">
+            <img
+              src="public/WallpaperDog-20534536 1.svg"
+              class="max-w-ws flex-img snap-start object-cover"
+            />
+            <div class="w-[380px] font-inter font-semibold text-[32px] mt-8 ml-6 text-center">We provide high quality products just for you</div>
+          </div>
+          <div id="slid-2" data-img="2">
+            <img
+              src="public/WallpaperDog-20397673 1.svg"
+              class="max-w-ws flex-img snap-start object-cover"
+            />
+            <div class="w-[380px] font-inter font-semibold text-[32px] mt-8 ml-6 text-center">Your satisfaction is our number one periority</div>
+          </div>
+          <div id="slid-3" data-img="3">
+            <img
+              src="public/WallpaperDog-20534715 1.svg"
+              class="max-w-ws flex-img snap-start object-cover"
+            />
+            <div class="w-[380px] font-inter font-semibold text-[32px] mt-8 ml-6 text-center">Let’s fulfill your fashion needs with shoearight now!</div>
+          </div>
+        </div>
+        <div
+          class="flex flex-row gap-[6px] absolute -bottom-[36px] left-1/2 -translate-x-1/2 z-10"
+        >
+          <a
+            id="_slid-1"
+            href="#slid-1"
+            target="_self"
+            class="w-[30px] h-[3px] bg-[#000000]  pointer-events-auto hover:bg-[#000000] "
+          ></a>
+          <a
+            id="_slid-2"
+            href="#slid-2"
+            target="_self"
+            class="w-[30px] h-[3px] bg-[#808080]  pointer-events-auto hover:bg-[#000000] "
+          ></a>
+          <a
+            id="_slid-3"
+            href="#slid-3"
+            target="_self"
+            class="w-[30px] h-[3px] bg-[#808080]  pointer-events-auto hover:bg-[#000000] "
+          ></a>
+        </div>
       </div>
-      <div class="max-w-ws h-[324px] bg-white relative">
-        <div
-          class="w-[380px] h-[91px] font-inter font-semibold text-[32px] leading-[38.73px] text-text text-center absolute top-8 left-6"
-        >
-          We provide high quality products just for you
-        </div>
-        <div
-          class="w-[102px] h-[32px] flex flex-row gap-1 absolute top-[182px] left-[163px]"
-        >
-          <div class="w-wl h-[23px] py-[10px]">
-            <hr class="border-solid border-2 border-black rounded-[1px]" />
-          </div>
-          <div class="w-wl h-[23px] py-[10px]">
-            <hr
-              class="border-solid border-2 border-black opacity-50 rounded-[1px]"
-            />
-          </div>
-          <div class="w-wl h-[23px] py-[10px]">
-            <hr
-              class="border-solid border-2 border-black opacity-50 rounded-[1px]"
-            />
-          </div>
-        </div>
+      <div class="relative max-w-ws mx-auto my-0 bg-white">
         <button
-          class="w-wb h-[48px] absolute top-[245px] left-[24px] border border-black rounded-[32px] py-3 px-4 gap-2 bg-but text-white"
-        >
+          id="nextbt"
+          class="w-wb h-[48px] mt-[75px] absolute left-[24px] border border-black rounded-[32px] py-3 px-4 gap-2 bg-but text-white"
+          >
           Next
         </button>
       </div>
     </div>
-    <script type="module" src="/main.js"></script>
+    <script defer type="module" src="/main.js"></script>
   </body>
 </html>

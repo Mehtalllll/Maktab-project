@@ -3,8 +3,11 @@ export default {
   content: ["**/*.html"],
   theme: {
     extend: {
+      flex:{
+        'img':'1 0 100%'
+      },
       spacing: {
-        'ws':'430px',
+        'ws':'428px',
         'hs':'926px',
         'wl':'30px',
         'wb':'380px'
