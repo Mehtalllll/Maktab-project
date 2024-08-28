@@ -3,6 +3,14 @@ export default {
   content: ["**/*.html"],
   theme: {
     extend: {
+      backgroundPosition: {
+        'leftbt': 'center left .5rem',
+      },
+      backgroundImage:{
+        'email':'url(public/envelope-fill.svg)',
+        'password':'url(public/lock-fill.svg)',
+        'search':'url(public/search.svg)'
+      },
       flex:{
         'img':'1 0 100%'
       },

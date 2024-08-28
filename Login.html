@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="continer" class="w-ws h-[940px] mx-auto relative shadow-2xl">
+      <div class="w-full h-[56px] absolute top-3 px-4">
+        <img id="back" class="w-8 h-8 cursor-pointer" src="public/arrow-left-short.svg" />
+      </div>
+      <img
+        class="w-[54px] h[81px] absolute top-[132px] left-[187px]"
+        src="public/Vector 1.svg"
+      />
+      <div
+        class="w-[342px] h-[39px] absolute top-[331px] left-[43px] font-inter font-semibold text-[32px] leading-10 text-center text-[#152536]"
+      >
+        Login to Your Account
+      </div>
+      <input
+        id="Username"
+        class="bg-email bg-no-repeat bg-leftbt px-8 w-[380px] h-[37px] opacity-50 absolute left-6 top-[418px] bg-[#fafafa] placeholder-black focus:opacity-100"
+        type="email"
+        placeholder="Username"
+      />
+      <input
+        id="myInput"
+        class="bg-password bg-no-repeat bg-leftbt px-8 w-[380px] h-[37px] opacity-50 absolute left-6 top-[476px] bg-[#fafafa] placeholder-black focus:opacity-100"
+        type="password"
+        placeholder="Password"
+      />
+      <div id="eye" class="opacity-50">
+        <input
+          class="absolute right-10 top-[485px] w-5 h-5"
+          type="image"
+          src="public/eye-svgrepo-com.svg"
+          onclick="myFunction()"
+        />
+      </div>
+      <div
+        class="w-[47px] h-[21px] absolute top-[540px] left-[190px] font-inter  font-medium"
+      >
+        <a href="Singup.html">Signup</a>
+      </div>
+      <div id="error" class="w-[300px]  absolute top-[600px] left-[60px] font-inter font-semibold text-sm text-center">
+      
+      </div>
+      <button
+        id="singinlogin"
+        class="w-wb h-[48px] mt-[6px] absolute left-[24px] top-[847px] mb-8 border border-[#6f7174] rounded-[32px] py-3 px-4 gap-2 bg-[#6f7174] text-white"
+      >
+      Login
+      </button>
+    </div>
+    <script defer src="script/Login.js" ></script>
+  </body>
+</html>

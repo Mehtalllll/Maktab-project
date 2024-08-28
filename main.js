@@ -33,6 +33,8 @@ nextbutton.addEventListener("click",()=>{
     slid2.style.backgroundColor = "#808080";
     slid3.style.backgroundColor = "#000000";
     nextbutton.textContent="Get Started"
+    nextbutton.outerHTML=`<a href="Login.html">${nextbutton.outerHTML}</a>`
+    
     
 })
 
