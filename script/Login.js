@@ -2,7 +2,8 @@ let logsin=document.getElementById("singinlogin")
 let username=document.getElementById("Username")
 let password=document.getElementById("myInput")
 const error=document.getElementById("error")
-let token;
+const backbut=document.getElementById("back")
+const passwordlogin=document.getElementById("passwordlogin")
 // ===================================================Function for paswor visibility
 
 function myFunction() {
@@ -25,6 +26,7 @@ function myFunction() {
 
 (()=>{
     (()=>{
+      if(username,password){
         username.addEventListener("keyup",()=>{
             let passwordlength=password.value.split("").length
             let usernamelength=username.value.split("").length
@@ -49,12 +51,12 @@ function myFunction() {
                 logsin.style.borderColor="#6f7174"
             }
     })
-    
+    }
     })()
 })()
 
 // =================================================== To Login
-
+if(logsin){
 logsin.addEventListener("click", () => {
   let userobje = {
     "username":`${username.value}`,
@@ -80,9 +82,8 @@ logsin.addEventListener("click", () => {
         }else{
             error.style.color="#298f29"
             error.innerHTML="Successfully"
-            // window.location.href = "home.html"
-             token=JSON.parse(result).token;
-
+            window.location.href = "home.html"
+            localstorage = window.localStorage.setItem("token",JSON.parse(result).token);
         }
 
     })
@@ -90,9 +91,14 @@ logsin.addEventListener("click", () => {
       error.innerHTML=error
     });
 });
+}
+
 
 // =================================================== To Back button
-document.getElementById("back").addEventListener("click",()=>{
+if(backbut){
+backbut.addEventListener("click",()=>{
   window.location.href = "index.html";
-})
-
+})}
+if(passwordlogin){
+  passwordlogin.addEventListener("click",myFunction)
+}
