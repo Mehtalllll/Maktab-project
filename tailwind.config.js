@@ -3,13 +3,18 @@ export default {
   content: ["**/*.html"],
   theme: {
     extend: {
+      backgroundSize:{
+        "20":'20px'
+      },
       backgroundPosition: {
         'leftbt': 'center left .5rem',
+        'cart': 'center left 3rem',
       },
       backgroundImage:{
         'email':'url(public/envelope-fill.svg)',
         'password':'url(public/lock-fill.svg)',
-        'search':'url(public/search.svg)'
+        'search':'url(public/search.svg)',
+        'bag':'url(public/icons8-bag-32.png)',
       },
       flex:{
         'img':'1 0 100%'
