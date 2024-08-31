@@ -1,30 +1,78 @@
 const token = window.localStorage.getItem("token");
+
+// =================================================== oclock handel
+let todaytime = new Date()
+let oclock = todaytime.getHours()
+let oclockmessage=document.getElementById("oclock")
+if (oclock < 12) {
+  oclockmessage.innerText="Good Morning👋"
+} else if (oclock < 18) {
+  oclockmessage.innerText="Good Afternoon👋"
+} else {
+  oclockmessage.innerText="Good Evening👋"
+}
+
+// =================================================== to user name
+let userNameVisibility=document.getElementById("userName")
+fetch(`http://localhost:3000/user`,{
+  headers: {
+    Authorization: token,
+  },
+  method: "GET",
+})
+.then((Response) => {
+  return Response.text();
+})
+.then((result) => {
+  userNameVisibility.innerText=JSON.parse(result).username
+})
+
 // =================================================== get brands
 
-(() => {
-  fetch("http://localhost:3000/sneaker/brands", {
-    headers: {
-      Authorization: token,
-    },
-    method: "GET",
-  })
-    .then((Response) => {
-      return Response.text();
-    })
-    .then((result) => {
-      let brands = JSON.parse(result);
+async function getbrands(){
+
+  const response = await fetch("http://localhost:3000/sneaker/brands", {
+        headers: {
+          Authorization: token,
+        },
+        method: "GET",
+      })
+      const _brand=await response.json()
+      return _brand
+    }
+    getbrands().then(_brand=>{
       let bransp = document.getElementById("brands");
-      for (let i = 0; i <= brands.length; i++) {
+      for (let i = 0; i <= _brand.length-1; i++) {
         bransp.innerHTML += `<div
-              id="${brands[i]}"
-              class="brand border-2 bg-[#FFFFFF] border-[#343A40] rounded-[25px] h-[39px] text-nowrap content-center px-[20px]"
+              id="${_brand[i]}"
+              class="brand cursor-pointer border-2 bg-[#FFFFFF] border-[#343A40] rounded-[25px] h-[39px] text-nowrap content-center px-[20px]"
             >
-            ${brands[i]}
+            ${_brand[i]}
             </div>`;
       }
-      console.log(brands);
-    });
-})();
+      let breansarray=document.querySelectorAll('.brand')
+      breansarray.forEach(but=>{
+
+        but.addEventListener("click",()=>{
+          if(but.innerText==="All"){
+            document.getElementById("notfound").style.display = "none";
+            document.getElementById("card-box").style.display = "grid";
+            const cardBox = document.getElementById("card-box")
+            cardBox.innerHTML=""
+          }
+          else if(but.innerText==="See All"){
+            document.getElementById("notfound").style.display = "none";
+            document.getElementById("card-box").style.display = "grid";
+            pagedata(2)
+          }else{
+            searchdata(1,but.innerText)
+          }
+          
+        })
+      })
+    })
+    getbrands();
+
 
 // =================================================== To page data
 function pagedata(num) {
@@ -43,9 +91,9 @@ function pagedata(num) {
         "totalPages",
         carddata.totalPages
       );
-      for (let i = 0; i <= carddata.perPage - 1; i++) {
-        const cardBox = document.getElementById("card-box")
-        cardBox.innerHTML += `<div id="${carddata.data[i].id}" class="flex flex-col gap-y-3">
+      const cardBox = document.getElementById("card-box")
+      for (let i = 0; i < carddata.perPage; i++) {
+        cardBox.innerHTML += `<div id="${carddata.data[i].id}" class="cardclick cursor-pointer flex flex-col gap-y-3">
                          <div class="w-[182px] h-[182px] bg-[#f3f3f3] rounded-3xl relative">
                              <img class="absolute top-5 left-5 w-[142px] h-[142px]" src="${carddata.data[i].imageURL}">
                          </div>
@@ -53,6 +101,7 @@ function pagedata(num) {
                          <p class="font-inter font-semibold text-base leading-4">$ ${carddata.data[i].price}</p>
                          </div>`;
       }
+      getcardindata(carddata)
     });
 }
 pagedata(1);
@@ -91,8 +140,8 @@ document.getElementById("search").addEventListener("keyup", () => {
   searchdata(1, keyWord);
 });
 
-async function searchdata(num, search) {
-  await fetch(
+ function searchdata(num, search) {
+   fetch(
     `http://localhost:3000/sneaker?page=1&limit=10&search=${search}`,
     {
       headers: {
@@ -126,16 +175,43 @@ async function searchdata(num, search) {
         document.getElementById("card-box").style.display = "grid";
         let localSearch = "";
         for (let i = 0; i < searchdata.data.length; i++) {
-          localSearch += `<div id="${searchdata.data[i].id}" class="flex flex-col gap-y-3">
+          localSearch += `<div id="${searchdata.data[i].id}" class="cardclick cursor-pointer flex flex-col gap-y-3">
             <div class="w-[182px] h-[182px] bg-[#f3f3f3] rounded-3xl relative">
                 <img class="absolute top-5 left-5 w-[142px] h-[142px]" src="${searchdata.data[i].imageURL}">
             </div>
-            <p class="font-inter font-bold text-xl leading-6 text-ellipsis">${searchdata.data[i].name}</p>
+            <p class="font-inter font-bold text-xl leading-6 truncate">${searchdata.data[i].name}</p>
             <p class="font-inter font-semibold text-base leading-4">$ ${searchdata.data[i].price}</p>
             </div>
             `;
         }
         cardbox.innerHTML = localSearch;
+        getcardinsearch(searchdata)
       }
     });
 }
+
+
+// // =================================================== To card click
+function getcardindata(carddata){
+  const cardclick = document.querySelectorAll(".cardclick");
+  
+  cardclick.forEach((card) => {
+    card.addEventListener("click", function () {
+     localStorage.setItem("cardid",JSON.stringify(card.id)) 
+     window.location.href = "item.html";
+    });
+  });
+}
+
+function getcardinsearch(searchdata){
+  const cardclick = document.querySelectorAll(".cardclick");
+  
+  cardclick.forEach((card) => {
+    card.addEventListener("click", function () {
+      localStorage.setItem("cardid",JSON.stringify(card.id)) 
+      window.location.href = "item.html";
+    });
+  });
+}
+
+

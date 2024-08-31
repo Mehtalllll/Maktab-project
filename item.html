@@ -15,10 +15,11 @@
           src="public/arrow-left-short.svg"
         />
       </div>
-      <div class="bg-[#f3f3f3] h-[450px] flex justify-center">
-        <img class="w-[360px]" src="public/Rectangle 6.svg" />
+      <div id="img"  class="bg-[#f3f3f3] h-[450px] flex justify-center">
+        
       </div>
       <div
+        id="category"
         class="flex flex-row justify-between font-inter font-bold text-[32px] text-[#212121] px-6 pt-6 pb-2"
       >
         <p>Running Sportwear</p>
@@ -36,7 +37,7 @@
         <p class="text-base">4.3(5.389 reviews)</p>
       </div>
       <div class="w-ws px-6 pt-4">
-        <p>Description</p>
+        <p class="text-lg font-semibold">Description</p>
         <p class=" line-clamp-2 overflow-y-scroll no-scrollbar">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias
           nisi, fuga ipsum atque voluptates, officiis modi voluptas reiciendis
@@ -47,27 +48,24 @@
         <p class="py-3">Size</p>
         <p class="py-3">Color</p>
         <div class="w-40 flex flex-now gap-2 overflow-x-scroll no-scrollbar">
-            <p class="min-w-8 h-8 flex items-center justify-center border-2 border-[#717171] rounded-full">39</p>
-            <p class="min-w-8 h-8 flex items-center justify-center border-2 border-[#717171] rounded-full">40</p>
             <p class="min-w-8 h-8 flex items-center justify-center border-2 border-[#717171] rounded-full">41</p>
             <p class="min-w-8 h-8 flex items-center justify-center border-2 border-[#717171] rounded-full">42</p>
             <p class="min-w-8 h-8 flex items-center justify-center border-2 border-[#717171] rounded-full">43</p>
-            <p class="min-w-8 h-8 flex items-center justify-center border-2 border-[#717171] rounded-full">44</p>
+            <p class="min-w-8 h-8 flex items-center justify-center border-2 border-[#717171] rounded-full">45</p>
         </div>
         <div class="w-40 flex flex-now gap-2 overflow-x-scroll no-scrollbar">
-            <p class="min-w-8 h-8 flex items-center justify-center border-2 border-[#f3f3f3] bg-[#f3f3f3] rounded-full"></p>
-            <p class="min-w-8 h-8 flex items-center justify-center border-2 border-[#607d8a] bg-[#607d8a] rounded-full"></p>
-            <p class="min-w-8 h-8 flex items-center justify-center border-2 border-[#9d28ac] bg-[#9d28ac] rounded-full"></p>
+            <p class="min-w-8 h-8 flex items-center justify-center border-2 border-black bg-black rounded-full"></p>
             <p class="min-w-8 h-8 flex items-center justify-center border-2 border-[#7a5448] bg-[#7a5448] rounded-full"></p>
+            <p class="min-w-8 h-8 flex items-center justify-center border-2 border-[#607d8a] bg-white rounded-full"></p>
             <p class="min-w-8 h-8 flex items-center justify-center border-2 border-[#1a96f0] bg-[#1a96f0] rounded-full"></p>
-            <p class="min-w-8 h-8 flex items-center justify-center border-2 border-[#84ce23] bg-[#84ce23] rounded-full"></p>
+            <p class="min-w-8 h-8 flex items-center justify-center border-2 border-[#9d28ac] bg-[#9d28ac] rounded-full"></p>
         </div>
         <div class="flex flex-row items-center text-lg gap-x-5 py-5 ">
         Quantity 
         <div class="h-12 bg-[#ebebec] rounded-full flex items-center px-4 mx-4 text-xl font-bold">
-        <p class="mx-3">-</p>
-        <p class="mx-3">2</p>
-        <p class="mx-3">+</p>
+        <p id="minus" class="mx-3 cursor-pointer hover:underline">-</p>
+        <p id="totalnum" class="mx-3">0</p>
+        <p id="plus" class="mx-3 cursor-pointer hover:underline">+</p>
         </div>
         </div>
         </div>
@@ -75,11 +73,12 @@
         <div class="flex flex-row gap-x-12 mt-6">
             <div class="flex flex-col">
             <p class="flex flex-row font-inter font-bold text-gray-600 text-sm">Total Price</p>
-            <p class="flex flex-row font-inter text-2xl font-bold">$240.00</p>
+            <p id="Pricep" class="flex flex-row font-inter text-2xl font-bold"></p>
             </div>
             <button class="bg-bag bg-no-repeat bg-20 bg-cart w-[230px] h-14 rounded-full bg-black text-white pl-8 text-lg font-semibold shadow-lg shadow-gray-400 ">Add to cart</button>
         </div>
       </div>
     </div>
+    <script defer src="script/item.js" type="module"></script>
   </body>
 </html>
