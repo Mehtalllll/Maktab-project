@@ -23,21 +23,31 @@ cardRender(id).then((respone) => {
     "img"
   ).innerHTML = `<img class="w-[340px] h-[340px]" src="${respone.imageURL}" />`;
   document.getElementById("Pricep").innerHTML = `<p>$<p id="pricetotal">${respone.price}</p>.00</p>`;
+
+  // =================================================== To total price
+
+  const plus=document.getElementById("plus")
+  const minus=document.getElementById("minus")
+  const totalnum=document.getElementById("totalnum")
+  const pricetotal=document.getElementById("pricetotal")
+  
+  plus.addEventListener("click",()=>{
+      totalnum.innerText=Number(totalnum.innerText)+1
+      pricetotal.innerHTML=Number(pricetotal.innerText)+Number(respone.price)
+  
+  })
+  
+  minus.addEventListener("click",()=>{
+      if(Number(totalnum.innerText)>1){
+          totalnum.innerText=Number(totalnum.innerText)-1
+          pricetotal.innerText=Number(pricetotal.innerText)-Number(respone.price)
+      }
+  })
 });
-// =================================================== To total price
-const plus=document.getElementById("plus")
-const minus=document.getElementById("minus")
-const totalnum=document.getElementById("totalnum")
-const pricetotal=document.getElementById("pricetotal")
 
-plus.addEventListener("click",()=>{
-    totalnum.innerText=Number(totalnum.innerText)+1
-    pricetotal.innerHTML=Number(pricetotal.innerText)*Number(totalnum.innerText)
+// =================================================== back to her man
 
-})
-
-minus.addEventListener("click",()=>{
-    if(Number(totalnum.innerText)>0){
-        totalnum.innerText=Number(totalnum.innerText)-1
-    }
+const backbut=document.getElementById("back")
+backbut.addEventListener("click",()=>{
+    window.location.href = "Home.html";
 })

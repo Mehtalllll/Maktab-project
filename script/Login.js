@@ -82,13 +82,15 @@ logsin.addEventListener("click", () => {
         }else{
             error.style.color="#298f29"
             error.innerHTML="Successfully"
-            window.location.href = "home.html"
+            setTimeout(()=>{
+              window.location.href = "home.html"
+            },500)
             localstorage = window.localStorage.setItem("token",JSON.parse(result).token);
         }
 
     })
     .catch((erroe) => {
-      error.innerHTML=error
+      error.innerHTML=error.text()
     });
 });
 }

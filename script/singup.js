@@ -82,12 +82,14 @@ logsin.addEventListener("click", () => {
         }else{
             error.style.color="#298f29"
             error.innerHTML="Successfully"
-            window.location.href = "index.html";
+            setTimeout(()=>{
+              window.location.href = "Login.html";
+            },500)
         }
 
     })
     .catch((erroe) => {
-      error.innerHTML=error
+      error.innerHTML=error.text()
     });
 });
 // =================================================== To Back button

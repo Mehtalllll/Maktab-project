@@ -24,7 +24,18 @@ fetch(`http://localhost:3000/user`,{
   return Response.text();
 })
 .then((result) => {
-  userNameVisibility.innerText=JSON.parse(result).username
+  userNameVisibility.innerText+=JSON.parse(result).username
+})
+// =================================================== to Logout
+const logout=document.getElementById("logout")
+logout.addEventListener("click",()=>{
+  fetch("http://localhost:3000/api#/", {
+    headers: {
+      Authorization: token,
+    },
+    method: "GET",
+  })
+  window.location.href = "login.html";
 })
 
 // =================================================== get brands
@@ -57,15 +68,29 @@ async function getbrands(){
           if(but.innerText==="All"){
             document.getElementById("notfound").style.display = "none";
             document.getElementById("card-box").style.display = "grid";
+            document.getElementById("pages").style.display = "flex"; 
+            document.getElementById("pages2").style.display = "none";
             const cardBox = document.getElementById("card-box")
             cardBox.innerHTML=""
+            pagedata(1)
+
           }
           else if(but.innerText==="See All"){
             document.getElementById("notfound").style.display = "none";
             document.getElementById("card-box").style.display = "grid";
-            pagedata(2)
+            document.getElementById("pages").style.display = "flex"; 
+            document.getElementById("pages2").style.display = "none";
+            pagedata(1)
+          }else if(but.innerText==="NIKE"){
+            searchdata(1,but.innerText)
+            document.getElementById("pages2").innerHTML=`<div class="cursor-pointer" id="pagenike1">1</div><div class="cursor-pointer" id="pagenike2">2</div>`
+            document.getElementById("pagenike1").addEventListener("click",()=>{searchdata(1,but.innerText)})
+            document.getElementById("pagenike2").addEventListener("click",()=>{searchdata(2,but.innerText)})
+            document.getElementById("pages").style.display = "none"; 
+            document.getElementById("pages2").style.display = "flex";
           }else{
             searchdata(1,but.innerText)
+            document.getElementById("pages2").style.display = "none";
           }
           
         })
@@ -92,8 +117,8 @@ function pagedata(num) {
         carddata.totalPages
       );
       const cardBox = document.getElementById("card-box")
-      for (let i = 0; i < carddata.perPage; i++) {
-        cardBox.innerHTML += `<div id="${carddata.data[i].id}" class="cardclick cursor-pointer flex flex-col gap-y-3">
+      for (let i = 0; i < carddata.data.length; i++) {
+        cardBox.innerHTML +=`<div id="${carddata.data[i].id}" class="cardclick cursor-pointer flex flex-col gap-y-3">
                          <div class="w-[182px] h-[182px] bg-[#f3f3f3] rounded-3xl relative">
                              <img class="absolute top-5 left-5 w-[142px] h-[142px]" src="${carddata.data[i].imageURL}">
                          </div>
@@ -101,6 +126,8 @@ function pagedata(num) {
                          <p class="font-inter font-semibold text-base leading-4">$ ${carddata.data[i].price}</p>
                          </div>`;
       }
+      document.getElementById("pages").style.display = "flex"; 
+      document.getElementById("pages2").style.display = "none"; 
       getcardindata(carddata)
     });
 }
@@ -142,7 +169,7 @@ document.getElementById("search").addEventListener("keyup", () => {
 
  function searchdata(num, search) {
    fetch(
-    `http://localhost:3000/sneaker?page=1&limit=10&search=${search}`,
+    `http://localhost:3000/sneaker?page=${num}&limit=10&search=${search}`,
     {
       headers: {
         Authorization: token,
@@ -170,9 +197,17 @@ document.getElementById("search").addEventListener("keyup", () => {
       if (searchdata.total == 0) {
         document.getElementById("notfound").style.display = "block";
         document.getElementById("card-box").style.display = "none";
+        document.getElementById("pages").style.display = "none"; 
       } else if (searchdata.total > 0) {
         document.getElementById("notfound").style.display = "none";
         document.getElementById("card-box").style.display = "grid";
+        document.getElementById("pages").style.display = "flex"; 
+        const totalPagesforsearch = localStorage.setItem(
+          "totalPagesforsearch",
+          searchdata.totalPages
+        );
+        // console.log(searchdata.totalPages);
+        
         let localSearch = "";
         for (let i = 0; i < searchdata.data.length; i++) {
           localSearch += `<div id="${searchdata.data[i].id}" class="cardclick cursor-pointer flex flex-col gap-y-3">
@@ -185,10 +220,35 @@ document.getElementById("search").addEventListener("keyup", () => {
             `;
         }
         cardbox.innerHTML = localSearch;
+        document.getElementById("pages").style.display = "none"; 
+        document.getElementById("pages2").style.display = "flex";
         getcardinsearch(searchdata)
       }
     });
 }
+
+const pages2 = document.getElementById("pages2");
+
+const totalPagesforsearch = window.localStorage.getItem("totalPagesforsearch");
+document.getElementById("search").addEventListener("keyup",()=>{
+  const totalPagesforsearch = window.localStorage.getItem("totalPagesforsearch");
+  pages2.innerHTML=""
+  for (let i = 1; i <= totalPagesforsearch; i++) {
+    pages2.innerHTML+=`<div class="number cursor-pointer" id="page2${i}">${i}</div>`
+  }
+
+  for (let i = 1; i <= totalPagesforsearch; i++) {
+    if (document.getElementById(`page2${i}`)) {
+      let page = document.getElementById(`page2${i}`);
+      page.addEventListener("click", () => {
+        cardbox.innerHTML = "";
+        searchdata(i,document.getElementById("search").value)
+      });
+    }
+  }
+})
+
+
 
 
 // // =================================================== To card click
