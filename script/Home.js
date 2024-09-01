@@ -83,11 +83,20 @@ async function getbrands(){
             pagedata(1)
           }else if(but.innerText==="NIKE"){
             searchdata(1,but.innerText)
-            document.getElementById("pages2").innerHTML=`<div class="cursor-pointer" id="pagenike1">1</div><div class="cursor-pointer" id="pagenike2">2</div>`
+            document.getElementById("pages2").innerHTML=`<div class="nike cursor-pointer " id="pagenike1">1</div><div class="nike cursor-pointer" id="pagenike2">2</div>`
             document.getElementById("pagenike1").addEventListener("click",()=>{searchdata(1,but.innerText)})
             document.getElementById("pagenike2").addEventListener("click",()=>{searchdata(2,but.innerText)})
             document.getElementById("pages").style.display = "none"; 
             document.getElementById("pages2").style.display = "flex";
+
+            const nike = document.querySelectorAll(".nike");
+            nike.forEach((number) => {
+              number.addEventListener("click", function () {
+                nike.forEach((num) => num.classList.remove("active"));
+                this.classList.add("active");
+              });
+            });
+            
           }else{
             searchdata(1,but.innerText)
             document.getElementById("pages2").style.display = "none";

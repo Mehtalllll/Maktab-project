@@ -51,3 +51,21 @@ const backbut=document.getElementById("back")
 backbut.addEventListener("click",()=>{
     window.location.href = "Home.html";
 })
+// =================================================== back to her man
+
+const selected = document.querySelectorAll(".selected");
+
+selected.forEach((color) => {
+  color.addEventListener("click", function () {
+    selected.forEach((num) => num.classList.remove("select"));
+    this.classList.add("select");
+  });
+});
+const selectedcolor = document.querySelectorAll(".selectedcolor");
+
+selectedcolor.forEach((color) => {
+  color.addEventListener("click", function () {
+    selectedcolor.forEach((num) => num.classList.remove("select"));
+    this.classList.add("select");
+  });
+});

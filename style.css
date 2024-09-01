@@ -6,6 +6,9 @@
 .active {
     color: rgb(0, 0, 0);
 }
+.select {
+    opacity: .4;
+}
 
 @tailwind base;
 @tailwind components;
