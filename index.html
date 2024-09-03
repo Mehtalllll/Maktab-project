@@ -2,9 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/svg+xml" href="/public/Vector 1.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>onboarding</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -13,36 +13,40 @@
     />
   </head>
   <body>
-    <div id="app" class="w-ws m-auto h-[940px] shadow-2xl">
-      <div class="relative max-w-ws mx-auto my-0">
+    <div id="app" class="flex justify-center items-start w-screen h-screen bg-slate-200">
+      <div class="relative max-w-[430px] w-full h-screen p-1 bg-white border border-gray-300 rounded-md shadow-2xl">
         <div
         id="scroll"
           class="flex overflow-x-hidden snap-mandatory snap-x scroll-smooth"
         >
-          <div id="slid-1" data-img="1">
+          <div id="slid-1" data-img="1" >
             <img
               src="public/WallpaperDog-20534536 1.svg"
-              class="max-w-ws flex-img snap-start object-cover"
+              class="max-w-ws w-screen flex-img snap-start object-cover "
             />
-            <div class="w-[380px] font-inter font-semibold text-[32px] mt-8 ml-6 text-center">We provide high quality products just for you</div>
+            <div class="max-w-ws w-full font-inter font-semibold text-[32px] mt-6 px-6 text-center">We provide high quality products just for you</div>
           </div>
           <div id="slid-2" data-img="2">
             <img
               src="public/WallpaperDog-20397673 1.svg"
-              class="max-w-ws flex-img snap-start object-cover"
+              class="max-w-ws w-screen flex-img snap-start object-cover "
             />
-            <div class="w-[380px] font-inter font-semibold text-[32px] mt-8 ml-6 text-center">Your satisfaction is our number one periority</div>
+
+            <div class="max-w-ws w-full font-inter font-semibold text-[32px] mt-6 px-6 text-center">Your satisfaction is our number one periority</div>
+             
           </div>
-          <div id="slid-3" data-img="3">
+          <div id="slid-3" data-img="3" >
             <img
               src="public/WallpaperDog-20534715 1.svg"
-              class="max-w-ws flex-img snap-start object-cover"
+              class="max-w-ws w-screen flex-img snap-start object-cover "
             />
-            <div class="w-[380px] font-inter font-semibold text-[32px] mt-8 ml-6 text-center">Let’s fulfill your fashion needs with shoearight now!</div>
+
+            <div class="max-w-ws w-ful font-inter font-semibold text-[32px] mt-6 px-6 text-center">Let’s fulfill your fashion needs with shoearight now!</div>
+
           </div>
         </div>
         <div
-          class="flex flex-row gap-[6px] absolute -bottom-[25px] left-1/2 -translate-x-1/2 z-10"
+          class="flex flex-row justify-center gap-[6px] mt-6 mb-2 z-10"
         >
           <a
             id="_slid-1"
@@ -63,14 +67,14 @@
             class="w-[30px] h-[3px] bg-[#808080]  pointer-events-auto hover:bg-[#000000] "
           ></a>
         </div>
-      </div>
-      <div class="relative max-w-ws mx-auto my-0 bg-white">
-        <button
+        <div class="flex justify-center items-center pt-8">
+          <button
           id="nextbt"
-          class="w-wb h-[48px] mt-[75px] absolute left-[24px] border border-black rounded-[32px] py-3 px-4 gap-2 bg-but text-white"
+          class="w-11/12 h-[48px] border border-black rounded-[32px] py-3 px-4  bg-but text-white"
           >
           Next
         </button>
+      </div>
       </div>
     </div>
     <script defer type="module" src="/main.js"></script>

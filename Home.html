@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div id="continer" class="w-ws h-[940px] mx-auto relative shadow-2xl">
-      <div class="flex flex-row justify-between">
+    <div id="continer" class="flex justify-center items-start w-screen h-screen bg-slate-200">
+      <div class="relative max-w-[430px] w-full h-[200vh] p-1 bg-white border border-gray-300 rounded-md shadow-2xl">
+      <div class="w-full flex flex-row justify-between">
         <div class="flex flex-col w-[135px] h-12 absolute top-4 left-6 gap-y-3">
           <p id="oclock" class="font-inter font-medium text-sm text-[#757475]">
             
@@ -16,27 +17,28 @@
           <p id="userName" class="font-inter font-bold text-base text-[#152536]">
           </p>
         </div>
-        <div class="flex flex-row w-16 h-6 absolute top-8 left-[340px] gap-x-4">
+        <div class="w-full flex flex-row justify-end pt-5 pr-5 gap-x-4">
+          <p id="logout" class=" font-inter text-xs font-bold text-[rgb(255,57,57)] hover:underline cursor-pointer">Logout</p>
           <img class="w-6 h-6" src="public/Vector -zing.svg" />
           <img class="w-6 h-[22px]" src="public/Vector.svg" />
         </div>
-        <p id="logout" class="font-inter absolute top-[53px] left-[270px] text-xs font-bold text-[rgb(255,57,57)] hover:underline cursor-pointer">Logout</p>
       </div>
+      <div class="w-full flex justify-center pt-10">
       <input
         id="search"
         type="search"
-        class="bg-search bg-no-repeat bg-leftbt w-[380px] h-[37px] rounded p-[8px, 12px, 8px, 12px] absolute top-[88px] left-6 pl-8 bg-[#FAFAFA]"
+        class="bg-search bg-no-repeat bg-leftbt w-11/12 h-[37px] rounded p-[8px, 12px, 8px, 12px]  left-6 pl-8 bg-[#FAFAFA]"
         placeholder="Search"
-      />
+      /></div>
       <div>
-        <div class="absolute top-[155px]">
+        <div class="w-full flex justify-between items-center px-6 py-4">
           <p
-            class="w-[131px] h-6 absolute left-6 font-inter font-semibold text-xl"
+            class=" font-inter font-semibold text-xl"
           >
             Most Popular
           </p>
           <p
-            class="cursor-pointer brand w-[54px] h-[19px] absolute left-[350px] top-[3px] font-inter font-semibold text-base hover:underline"
+            class="cursor-pointer brand font-inter font-semibold text-base hover:underline"
             
           >
             See All
@@ -44,54 +46,57 @@
         </div>
         <div
           id="brands"
-          class="flex flex-row absolute w-ws top-[199px] pl-6 gap-x-4 font-inter font-semibold text-base text-center no-scrollbar overflow-x-scroll"
+          class="flex flex-row w-full pl-6 gap-x-4 font-inter font-semibold text-base text-center no-scrollbar overflow-x-scroll"
         >
 
-          <div
+          <!-- <div
             class="brand cursor-pointer border-2 bg-[#FFFFFF] border-[#343A40] rounded-[25px] h-[39px] text-nowrap content-center px-[20px]"
           >
             All
-          </div>
+          </div> -->
           
         </div>
         <div
-        id="card-box"
-        class="w-wb h-[572px] grid grid-cols-2 gap-4 absolute top-[262px] left-6 overflow-y-scroll no-scrollbar overflow-x-hidden"
+        id="card-box1"
+        class="w-full h-[600px] overflow-y-scroll no-scrollbar overflow-x-hidden "
         >
-        
-        <!-- <div id="" class="cardclick cursor-pointer flex flex-col gap-y-3">
-          <div class="w-[182px] h-[182px] bg-[#f3f3f3] rounded-3xl relative">
-              <img class="absolute top-5 left-5 w-[142px] h-[142px]" src="">
+        <div id="card-box" class=" w-full grid grid-cols-2 gap-x-4 gap-y-6 pt-4 px-5">
+
+        <!-- <div id="" class="w-12/12 h-[220px] cardclick cursor-pointer flex flex-col items-center gap-y-3">
+          <div class="w-full h-full flex justify-center items-center  bg-[#f3f3f3] rounded-3xl relative">
+              <img class=" w-10/12 h-full" src="">
           </div>
-          <p class="font-inter font-bold text-xl leading-6 truncate"></p>
-          <p class="font-inter font-semibold text-base leading-4"></p>
+          <p class="w-10/12 font-inter font-bold text-xl leading-6 truncate "></p>
+          <p class="w-11/12 font-inter font-semibold text-base leading-4"></p>
           </div> -->
-        
+
+
+        </div>
+
+          <div
+            id="pages"
+            class="w-full mx-2 font-semibold font-inter text-sm flex flex-row justify-center items-center  gap-x-4 text-slate-500"
+          >
+          <div class="active number cursor-pointer "  id="page1">1</div>
+        </div>
+          <div
+            id="pages2"
+            class="w-full mx-2 font-semibold font-inter text-sm flex flex-row justify-center items-center  gap-x-4 text-slate-500 "
+          >
+  
+        </div>
         </div>
         <div id="notfound" class=" hidden"><img class="w-ws mt-72 "  src="public/35_Light_search result not found.png" ></div>
-        <div
-          id="pages"
-          class="w-ws absolute bottom-16 mb-2 font-semibold font-inter text-sm flex flex-row justify-center gap-x-4 text-slate-500"
-        >
-
-
-      </div>
-        <div
-          id="pages2"
-          class="w-ws absolute bottom-16 mb-2 font-semibold font-inter text-sm flex flex-row justify-center gap-x-4 text-slate-500"
-        >
-
-
-      </div>
-        <div class="w-ws px-6 grid grid-cols-5 justify-items-center font-inter font-semibold text-[10px] absolute bottom-4">
-          <a href="" class="grid grid-cols-1 justify-items-center"> <img src="/public/house-door-fill.svg"/> Home </a>
-          <a href="" class="grid grid-cols-1 justify-items-center"> <img src="public/bag.svg"/> Cart </a>
-          <a href="" class="grid grid-cols-1 justify-items-center"> <img src="public/cart2.svg"/> Orders </a>
-          <a href="" class="grid grid-cols-1 justify-items-center"> <img src="public/wallet2.svg"/> Wallet </a>
-          <a href="" class="grid grid-cols-1 justify-items-center gap-y-2"> <img src="public/Group 5.svg"/> Profile </a>
+        <div class="w-full h-25 px-6 flex flex-row justify-center items-center gap-x-10 font-inter font-semibold text-[10px] ">
+          <a href="" class="grid grid-cols-1 justify-items-center py-3"> <img src="/public/house-door-fill.svg"/> Home </a>
+          <a href="" class="grid grid-cols-1 justify-items-center py-3"> <img src="public/bag.svg"/> Cart </a>
+          <a href="" class="grid grid-cols-1 justify-items-center py-3"> <img src="public/cart2.svg"/> Orders </a>
+          <a href="" class="grid grid-cols-1 justify-items-center py-3"> <img src="public/wallet2.svg"/> Wallet </a>
+          <a href="" class="grid grid-cols-1 justify-items-center py-3 gap-y-2"> <img src="public/Group 5.svg"/> Profile </a>
  
         </div>
       </div>
+    </div>
     </div>
     <script defer src="script/Home.js" type="module"></script>
   </body>

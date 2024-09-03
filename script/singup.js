@@ -1,8 +1,9 @@
-
+import axios from "axios"
+// ===================================================value
 let logsin=document.getElementById("singinlogin")
-let username=document.getElementById("Username")
-let password=document.getElementById("myInput")
-const error=document.getElementById("error")
+let usernameInput=document.getElementById("Username")
+let passwordInput=document.getElementById("myInput")
+const errorthrow=document.getElementById("error")
 
 // ===================================================Function for paswor visibility
 
@@ -23,75 +24,81 @@ function myFunction() {
   }
 
 // ===================================================Function To manage not being empty
-
-(()=>{
-    (()=>{
-        username.addEventListener("keyup",()=>{
-            let passwordlength=password.value.split("").length
-            let usernamelength=username.value.split("").length
-            if(usernamelength>0 && passwordlength>0){
-              logsin.style.backgroundColor="#212529"
-              logsin.style.borderColor="#212529"
-              
-            }else{
-              logsin.style.backgroundColor="#6f7174"
-              logsin.style.borderColor="#6f7174"
-            }
-    })
-        password.addEventListener("keyup",()=>{
-            let usernamelength=username.value.split("").length
-            let passwordlength=password.value.split("").length
-            if(usernamelength>0 && passwordlength>0){
-                logsin.style.backgroundColor="#212529"
-                logsin.style.borderColor="#212529"
-    
-            }else{
-                logsin.style.backgroundColor="#6f7174"
-                logsin.style.borderColor="#6f7174"
-            }
-    })
-    
-    })()
-})()
+(() => {
+  (() => {
+    if ((usernameInput, passwordInput)) {
+      usernameInput.addEventListener("keyup", () => {
+        let passwordlength = passwordInput.value.split("").length;
+        let usernamelength = usernameInput.value.split("").length;
+        if (usernamelength > 0 && passwordlength > 0) {
+          logsin.style.backgroundColor = "#212529";
+          logsin.style.borderColor = "#212529";
+        } else {
+          logsin.style.backgroundColor = "#6f7174";
+          logsin.style.borderColor = "#6f7174";
+        }
+      });
+      passwordInput.addEventListener("keyup", () => {
+        let usernamelength = usernameInput.value.split("").length;
+        let passwordlength = passwordInput.value.split("").length;
+        if (usernamelength > 0 && passwordlength > 0) {
+          logsin.style.backgroundColor = "#212529";
+          logsin.style.borderColor = "#212529";
+        } else {
+          logsin.style.backgroundColor = "#6f7174";
+          logsin.style.borderColor = "#6f7174";
+        }
+      });
+    }
+  })();
+})();
 
 // =================================================== To to sign in
-
-
+let userobje = {};
 logsin.addEventListener("click", () => {
-  let userobje = {
-    "username":`${username.value}`,
-    "password":`${password.value}`
-}  
-
-  fetch("http://localhost:3000/auth/signup", {
-    headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-      },
-    method:"POST",
-    body: JSON.stringify(userobje),
-  })
-    .then((response)=>{return response.text();   
-    })
-    .then((result)=>{
-        if(JSON.parse(result).message && JSON.parse(result).message!=undefined){
-            error.style.color="#f86c55"
-            console.log(JSON.parse(result).message);
-            error.innerHTML=JSON.parse(result).message
-            setTimeout(()=>{error.innerHTML=""},3000)
-        }else{
-            error.style.color="#298f29"
-            error.innerHTML="Successfully"
-            setTimeout(()=>{
-              window.location.href = "Login.html";
-            },500)
-        }
-
-    })
-    .catch((erroe) => {
-      error.innerHTML=error.text()
-    });
+  console.log("booos");
+  
+  userobje = {
+    username: `${usernameInput.value}`,
+    password: `${passwordInput.value}`,
+  };
+  singupresponse(userobje);
 });
+
+async function singupresponse(data) {
+  try {
+    const response = await axios.post(`http://localhost:3000/auth/signup`, data);
+    setTimeout(()=>{
+                    window.location.href = "Login.html"
+                  },1000)
+    throw "successfully"
+  } catch (error) {
+    console.log(error);
+    
+    if(error=="successfully"){
+      errorthrow.innerHTML = `<div class="errorClick py-2 px-2 rounded-lg bg-green-600 text-white  cursor-pointer opacity-30 hover:opacity-100 animate-fade">successfully</div>`;
+    }
+    
+      if(error.response.data.message){
+        if(Array.isArray(error.response.data.message)==true){
+    error.response.data.message.forEach(element => {
+      errorthrow.innerHTML += `<div class="errorClick py-2 px-2 rounded-lg bg-red-600 text-white  cursor-pointer opacity-30 hover:opacity-100 animate-fade">${element}</div>`;
+    });
+     }
+        if(Array.isArray(error.response.data.message)==false){
+          errorthrow.innerHTML = `<div class="errorClick py-2 px-2 rounded-lg bg-red-600 text-white  cursor-pointer opacity-30 hover:opacity-100 animate-fade">${error.response.data.message}</div>`;
+     }
+    }
+
+        const errorItem=document.querySelectorAll(".errorClick")
+        errorItem.forEach(item=>{
+          item.addEventListener("click",()=>{
+            item.outerHTML=""
+          })
+        })
+        setTimeout(()=>{errorthrow.innerHTML=""},5000)
+  }
+}
 // =================================================== To Back button
 document.getElementById("back").addEventListener("click",()=>{
   window.location.href = "index.html";

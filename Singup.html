@@ -7,53 +7,61 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div id="continer" class="w-ws h-[940px] mx-auto relative shadow-2xl">
-      <div class="w-full h-[56px] absolute top-3 px-4">
+    <div id="continer" class="flex justify-center items-start w-screen h-screen bg-slate-200">
+      <div class="relative max-w-[430px] w-full h-screen p-1 bg-white border border-gray-300 rounded-md shadow-2xl">
+      <div class="w-full h-[56px] pt-3 px-4">
         <img id="back" class="w-8 h-8 cursor-pointer" src="public/arrow-left-short.svg" />
       </div>
+      <div class="w-full h-40 flex justify-center items-end">
       <img
-        class="w-[54px] h[81px] absolute top-[132px] left-[187px]"
+        class="w-[54px] h[81px] mx-auto pt-20"
         src="public/Vector 1.svg"
       />
+    </div>
       <div
-        class="w-[342px] h-[39px] absolute top-[331px] left-[43px] font-inter font-semibold text-[32px] leading-10 text-center text-[#152536]"
+      class="w-full h-[39px] flex justify-center pt-24 font-inter font-semibold text-[31px] leading-10 text-center text-[#152536]"
       >
-        Login to Your Account
+        Singup Your Account
       </div>
+      <div class=" flex flex-col justify-center items-center gap-6 pt-20 relative">
       <input
         id="Username"
-        class="bg-email bg-no-repeat bg-leftbt px-8 w-[380px] h-[37px] opacity-50 absolute left-6 top-[418px] bg-[#fafafa] placeholder-black focus:opacity-100"
+        class="bg-email bg-no-repeat bg-leftbt px-8 w-10/12 h-[37px] opacity-50   bg-[#fafafa] placeholder-black focus:opacity-100"
         type="email"
         placeholder="Username"
       />
       <input
         id="myInput"
-        class="bg-password bg-no-repeat bg-leftbt px-8 w-[380px] h-[37px] opacity-50 absolute left-6 top-[476px] bg-[#fafafa] placeholder-black focus:opacity-100"
+        class="bg-password bg-no-repeat bg-leftbt px-8 w-10/12 h-[37px] opacity-50  bg-[#fafafa] placeholder-black focus:opacity-100"
         type="password"
         placeholder="Password"
       />
       <div id="eye" class="opacity-50">
         <input
           id="passwordsignup"
-          class="absolute right-10 top-[485px] w-5 h-5"
+          class="absolute right-11 top-[150px] w-5 h-5"
           type="image"
           src="public/eye-svgrepo-com.svg"
         />
       </div>
+      </div>
       <div
-        class="w-[47px] h-[21px] absolute top-[540px] left-[190px] font-inter font-medium"
+      class="w-full flex justify-center h-[21px]  pt-10 font-inter font-medium"
       >
       <a href="Login.html">Login</a>
       </div>
-      <div id="error" class="w-[300px]  absolute top-[600px] left-[60px] font-inter font-semibold text-sm text-center">
+      <div id="error" class="w-2/3 h-28 overflow-y-scroll no-scrollbar font-inter font-semibold text-xs text-center absolute top-2 right-2 flex flex-col gap-2  ">
       
       </div>
-      <button
-        id="singinlogin"
-        class="w-wb h-[48px] mt-[6px] absolute left-[24px] top-[847px] mb-8 border border-[#6f7174] rounded-[32px] py-3 px-4 gap-2 bg-[#6f7174] text-white"
-      >
-      Signup
-      </button>
+        <div class="flex justify-center items-center pt-56">
+          <button
+          id="singinlogin"
+          class="w-11/12 h-[48px] mx-6  border border-[#6f7174] rounded-[32px] py-3 px-4 bg-[#6f7174] text-white hover:bg-[#545455]"
+        >
+        Signup
+        </button>
+        </div>
+      </div>
     </div>
     <script defer src="script/singup.js" type="module"></script>
   </body>

@@ -1,6 +1,21 @@
 const token = window.localStorage.getItem("token");
 const id = localStorage.getItem("cardid");
 
+
+// =================================================== To function for total price
+
+
+function addOrUpdateURLparam(key,value){
+  const searchParams=new URLSearchParams(window.location.search)
+  searchParams.set(key,value)
+  const newRelativePathQuery = window.location.pathname + "?" +
+    searchParams.toString()
+  history.pushState(null,"",newRelativePathQuery)
+  }
+  
+  
+// =================================================== To card data price
+
 async function cardRender(id) {
   const response = await fetch(
     `http://localhost:3000/sneaker/item/${JSON.parse(id)}`,
@@ -15,6 +30,13 @@ async function cardRender(id) {
   return result;
 }
 cardRender(id).then((respone) => {
+  console.log(respone);
+  
+  addOrUpdateURLparam("id",respone.id)
+  addOrUpdateURLparam("brand",respone.brand)
+  addOrUpdateURLparam("name",respone.name)
+
+
   document.getElementById("category").innerHTML = `<p>${
     respone.category.charAt(0).toUpperCase() +
     respone.category.slice(1).toLowerCase()
@@ -51,7 +73,7 @@ const backbut=document.getElementById("back")
 backbut.addEventListener("click",()=>{
     window.location.href = "Home.html";
 })
-// =================================================== back to her man
+// =================================================== 
 
 const selected = document.querySelectorAll(".selected");
 
@@ -69,3 +91,4 @@ selectedcolor.forEach((color) => {
     this.classList.add("select");
   });
 });
+
